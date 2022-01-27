@@ -1,0 +1,5 @@
+<form method="post" action="{% url 'dashboard:upload-menu' %}">
+   {% csrf_token %}
+   <input type="file" value="Select file" name="file"/>
+   <input type="submit" value="Upload menu"/>
+</form>

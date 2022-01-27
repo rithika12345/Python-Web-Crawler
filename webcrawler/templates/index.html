@@ -1,0 +1,12 @@
+<body>
+<center>
+<H1>Please type your query inside the text file in the format 'query'</H1>
+<H1>The crawled data can be found on-</H1>
+<a href="https://docs.google.com/spreadsheets/d/10LLF8QGnY6sC5DwoLGc3tMinq34_AcOwTAvQ6-UNDJo/edit#gid=0" target="_blank">Visit Here!</a>
+<form method="POST" class="post-form" enctype="multipart/form-data">  
+        {% csrf_token %}  
+        {{ form.as_p }}  
+        <button type="submit" class="save btn btn-default">Save</button>  
+</form>  
+<center>
+</body>

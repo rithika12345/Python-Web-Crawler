@@ -1,0 +1,43 @@
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--headless")
+driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+query = 'comprehensive guide to web scraping in python'
+links = []
+n_pages = 20 
+for page in range(1, n_pages):
+    url = "http://www.google.com/search?q=" + query + "&start=" +      str((page - 1) * 100)
+    driver.get(url)
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
+    search = soup.find_all('div', class_="yuRUbf")
+    for h in search:
+        links.append(h.a.get('href'))
+
+def crawler(lines):
+    from bs4 import BeautifulSoup
+    from selenium import webdriver
+    from webdriver_manager.chrome import ChromeDriverManager
+    import gspread
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--headless")
+    driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+    gc=gspread.service_account(filename='Credentials.json')
+    sh=gc.open('scraper').Sheet1
+    n1=len(lines)
+    date=datetime.datetime.now
+    links = []
+    n_pages = 20
+    for j in range(n1):
+        for page in range(1, n_pages):
+            url = "http://www.google.com/search?q=" + lines[j] + "&start=" +str((page - 1) * 10)
+            driver.get(url)
+            soup = BeautifulSoup(driver.page_source, 'html.parser')
+            search = soup.find_all('div', class_="yuRUbf")
+            for h in search:
+                sc.append_row(h.a.get('href'))
+                n=len(links)
+                for i in range(n):
+                    print(links[i],"\n")
+

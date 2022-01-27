@@ -1,0 +1,15 @@
+import java.util.*;
+public class Student {
+    public static void main(String args[]) {
+      int firstday=25;
+      int sum=0;
+      for(int i=2;i<31;i++)
+      {
+          firstday=2*firstday;
+          sum=sum+firstday;
+      }
+      sum=sum+25;
+      System.out.println("Total salary after 30 days " + sum);
+    
+}
+}
